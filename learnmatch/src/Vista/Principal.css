@@ -1,0 +1,42 @@
+
+*, *:before, *:after {
+    box-sizing:inherit;
+}
+
+.barraNavegacion{
+    background-color: #08EEF9;
+    height: 70px;   
+}
+
+.contenedorPrincipal{
+    /*margin: 0 auto;
+    height: auto;*/
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    align-items: center;
+}
+
+.cardPrincipal{
+    border-radius: 1rem;
+    box-shadow: 0 1rem 1rem rgba(0, 0,0,0.2);
+    display:flex;
+    margin: 1.5rem;
+    overflow: hidden;
+    width: 30rem;
+}
+
+.columna-izq{
+    padding: 2rem;
+    max-width: 10rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.columna-der{
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    
+}
