@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button, Modal, Card } from 'react-bootstrap';
 
 // Componente de la modal //
 const MiModal = ({ show, handleClose, title, children }) => {
   return (
+    <>
     <Modal show={show} onHide={handleClose}>
       <Modal.Header closeButton>
         <Modal.Title>{title}</Modal.Title>
@@ -15,15 +16,15 @@ const MiModal = ({ show, handleClose, title, children }) => {
         </Button>
       </Modal.Footer>
     </Modal>
+    </>
   );
 };
 
 // Componente Card llamando a el componente Modal
-const CardConModal = ({ title, text, fullText }) => {
+const CardConModal = ({title, text, fullText }) => {
   const [modalShow, setModalShow] = useState(false);
-
   const showModal = () => setModalShow(true); //Variable que se usa para cambiar el valor para poner o ocultar la modal
-//  const hideModal = () => setModalShow(false);
+  //const hideModal = () => setModalShow(false);
   //const hideModal = () => {
     //console.log('Cerrando modal');
     //setModalShow(false);
@@ -37,15 +38,14 @@ const CardConModal = ({ title, text, fullText }) => {
 
  const hideModal = (event) => {
     if (event) {
-      event.preventDefault();
       event.stopPropagation();
     }
     console.log('Cerrando modal');
     setModalShow(false);
+    console.log(modalShow);
   };
   
   
-
   return (
     <>
       <Card>

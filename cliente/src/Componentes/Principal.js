@@ -1,48 +1,18 @@
-import React from 'react';
+import React,{useState} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Logo from '../Utils/LearnMatchCerebro.png';
+//import Logo from '../Utils/LearnMatchCerebro.png';
 import SimonVygotsky from '../Utils/Vygotsky.jpg';
-import '../Css/Botones.css';
+import { Container, Row, Col, Card, Button} from 'react-bootstrap';
 import CarruselPrinicipal from './CarruselPrincipal';
-import { Navbar, NavDropdown ,Nav, Container, Row, Col, Card, Button } from 'react-bootstrap';
-
-
+import BarraNavegacion from './BarraNavegacion';
 import CardConModal from './ModalPrincipal';
 
 const VistaPrincipal = () => {
   return (
     <>
-    <Navbar bg="light" expand="lg">
-        <Container>
-            <Navbar.Brand href="#home">
-            <img
-            src= {Logo} // Ruta del Logo
-            width="30"   // Establece el ancho del logo
-            height="30"  // Establece la altura del logo
-            className="d-inline-block align-top mx-3" // Añade margen a la derecha si es necesario
-            alt="LearnMatch logo"
-          />
-                LearnMatch
-            </Navbar.Brand>
-            <Nav className="me-auto">
-            <NavDropdown title="Material de aprendizaje" id="materialesAprendizaje1" className='mx-2'>
-                <NavDropdown.Item href="#action/3.1">Material de aprendizaje 1</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">Material de aprendizaje 2</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">Material de aprendizaje 3</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.4">Material de aprendizaje 4</NavDropdown.Item>
-            </NavDropdown>
-            <Nav.Link href="#about" className="mx-2">Sobre nosotros</Nav.Link>
-            </Nav>
-            <Nav>
-            <Button variant="primary" className="mx-1 btn-inscribete">Inscríbete</Button>
-        <Button variant="outline-primary" className="mx-1 btn-iniciar-sesion">Iniciar Sesión</Button>
-            </Nav>
-        </Container>
-    </Navbar>
-
+    <BarraNavegacion/>
      
-
-      <Container className='p-5'>
+    <Container className='p-5'>
         <Row>
         <Col>
         <img
@@ -61,72 +31,41 @@ const VistaPrincipal = () => {
       </Container>
 
       <Container className="mt-4">
-        <Row>
+      <Row>
           <Col md={3} className="mb-3">
-          <Card style={{ width: '18rem' }}>
-                <Card.Img variant="top" src="holder.js/100px180" />
-                <Card.Body>
-                    <Card.Title>Card Title</Card.Title>
-                    <Card.Text>
-                    Some quick example text to build on the card title and make up the
-                    bulk of the card's content.
-                    </Card.Text>
-                    <Button variant="primary">Aprende Mas</Button>
-                </Card.Body>
-              </Card>
+          <CardConModal 
+          title="Empatia" 
+          text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse in rhoncus ex" 
+          fullText="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse in rhoncus ex"
+        />
+
           </Col>
           <Col md={3} className="mb-3">
-            <Card style={{ width: '18rem' }}>
-                    <Card.Img variant="top" src="holder.js/100px180" />
-                    <Card.Body>
-                        <Card.Title>Card Title</Card.Title>
-                        <Card.Text>
-                        Some quick example text to build on the card title and make up the
-                        bulk of the card's content.
-                        </Card.Text>
-                        <Button variant="primary">Aprende Mas</Button>
-                    </Card.Body>
-                </Card>
+          <CardConModal 
+          title="Trabajo en equipo" 
+          text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse in rhoncus ex" 
+          fullText="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse in rhoncus ex"
+        />
+
           </Col>
           <Col md={3} className="mb-3">
-            <Card style={{ width: '18rem' }}>
-                    <Card.Img variant="top" src="holder.js/100px180" />
-                    <Card.Body>
-                        <Card.Title>Card Title</Card.Title>
-                        <Card.Text>
-                        Some quick example text to build on the card title and make up the
-                        bulk of the card's content.
-                        </Card.Text>
-                        <Button variant="primary">Aprende Mas</Button>
-                    </Card.Body>
-                </Card>
+          <CardConModal 
+          title="Comunicacion" 
+          text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse in rhoncus ex" 
+          fullText="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse in rhoncus ex"
+        />
           </Col>
-           <Col md={3} className="mb-3">
-            <Card style={{ width: '18rem' }}>
-                    <Card.Img variant="top" src="holder.js/100px180" />
-                    <Card.Body>
-                        <Card.Title>Card Title</Card.Title>
-                        <Card.Text>
-                        Some quick example text to build on the card title and make up the
-                        bulk of the card's content.
-                        </Card.Text>
-                        <Button variant="primary">Aprende Mas</Button>
-                    </Card.Body>
-                </Card>
+          
+          <Col md={3} className="mb-3">
+          <CardConModal 
+          title="Escucha Activa" 
+          text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse in rhoncus ex" 
+          fullText="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse in rhoncus ex"
+        />
           </Col>
         </Row>
       </Container>
-
-    
-      <Container>
-      <CarruselPrinicipal/>
-      </Container>
-
-
-
-
-
-
+      
       <footer className="footer mt-auto py-3 bg-light">
         <Container>
           <span className="text-muted">"El maestro debe adoptar el papel de facilitador, no proveedor de contenido" <br/> -Lev Semyonovich Vygotski </span>

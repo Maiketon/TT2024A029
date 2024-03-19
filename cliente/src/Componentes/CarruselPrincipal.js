@@ -4,6 +4,7 @@ import { Carousel} from 'react-bootstrap';
 
 function CarruselPrinicipal() {
   return (
+    <>
     <Carousel indicators={false}>
       <Carousel.Item>
         <CardConModal 
@@ -29,6 +30,7 @@ function CarruselPrinicipal() {
         />
       </Carousel.Item>
     </Carousel>
+    </>
   );
 }
 
