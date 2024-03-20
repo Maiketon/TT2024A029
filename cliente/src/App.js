@@ -1,8 +1,15 @@
 import './App.css';
 import {useState} from "react";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+//CONECTAR CON EL BACK//
 import Axios from "axios";
-import 'bootstrap/dist/css/bootstrap.min.css'; //SE IMPORTA BOOSTRAP DENTRO DE REACT//
+ //SE IMPORTA BOOSTRAP DENTRO DE REACT//
+import 'bootstrap/dist/css/bootstrap.min.css';
+//COMPONENTES D ELA VISTA PRINCIPAL//
 import VistaPrincipal from './Componentes/Principal';
+import SobreNosotros from "./Componentes/SobreNosotros";
+
+
 //import Swal from 'sweetalert2'
 //import withReactContent from 'sweetalert2-react-content'
 
@@ -11,7 +18,14 @@ import VistaPrincipal from './Componentes/Principal';
 function App() {
   return (
     <div className="App">
-     <VistaPrincipal/>
+    <Router>
+      <Routes>
+        <Route path="/" element={<VistaPrincipal />}>
+          <Route index element={<div>Contenido principal</div>} />
+          <Route path="sobre-nosotros" element={<SobreNosotros />} />
+        </Route>
+      </Routes>
+    </Router>
     </div>
   );
 }
