@@ -1,6 +1,6 @@
 // SobreNosotros.js
 import React from 'react';
-import { Container, Row, Col, Card, Button } from 'react-bootstrap';
+import { Container, Row, Col, Card} from 'react-bootstrap';
 
 
 //Imagenes//
@@ -12,7 +12,7 @@ import CarruselPrinicipal from './CarruselPrincipal';
 const SobreNosotros = () => {
   return (
     <>
-    <Container>
+    <Container className='p-5'>
     <Row>
       <Col>
         <div>
@@ -27,6 +27,12 @@ const SobreNosotros = () => {
     </div>
       </Col>
     </Row>
+    <Container>
+    <div>
+        Habilidades blandas a fortalecer
+    </div>
+    <CarruselPrinicipal/>
+    </Container>
     <Row>
       <h1>Desarrolladores</h1>
       <Col>
@@ -65,14 +71,10 @@ const SobreNosotros = () => {
         </Card>
       </Col>
     </Row>
+
     </Container>
   
-    <Container>
-    <div>
-        Habilidades blandas a fortalecer
-    </div>
-    <CarruselPrinicipal/>
-    </Container>
+    
 
 
     </>

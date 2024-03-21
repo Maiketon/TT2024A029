@@ -6,7 +6,7 @@ const FormularioInscribirse = () =>
 {
     return (
         <>
-        <Container>
+        <Container className='p-5'>
           <Row className="justify-content-md-center">
             <Col md={8}>
               <Card>
@@ -32,10 +32,8 @@ const FormularioInscribirse = () =>
                     </Form.Group>
 
                     <Form.Group as={Row} className="mb-3" controlId="email">
-                      <Form.Label className="text-md-right text-start form-label-pe-none">Correo electrónico:</Form.Label>
-                      <Col>
-                      <Form.Control type="email" placeholder="Ingresa un correo electrónico" />
-                      </Col>
+                      <Form.Label className="text-md-right text-start form-label-pe-none">Correo electronico:</Form.Label>
+                      <Form.Control type="email" placeholder="Ingresa tu correo electronico" />
                     </Form.Group>
     
                     <Form.Group as={Row} className="mb-3" controlId="password">
@@ -47,22 +45,20 @@ const FormularioInscribirse = () =>
                       <Form.Label className="text-md-right text-start form-label-pe-none">Confirma tu Contraseña:</Form.Label>
                       <Form.Control type="password" placeholder="Repite tu contraseña." />
                     </Form.Group>
-
-                    <Container>
-                   <Col>
-                    <Button variant="outline-primary" type="submit" className="ms-2">
-                      Registrarse
-                    </Button>
-                    </Col>
-                   </Container>
                 <Container>
                     <label style={{
                         justifyContent: "center",
                         textAlign: "center"
                     }}>Si ya tienes una cuenta puedes <strong>Iniciar sesion</strong> </label>
                     
-                    </Container>
-                   
+                    </Container >
+                 <Container className='p-3'>
+                   <Col>
+                    <Button variant="outline-primary" type="submit" className="ms-2">
+                      Registrarse
+                    </Button>
+                    </Col>
+                   </Container>
                   </Form>
                 </Card.Body>
               </Card>

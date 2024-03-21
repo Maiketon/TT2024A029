@@ -11,11 +11,11 @@ const FormLogin = ()=>
 
     return (
         <>
-        <Container> 
-            <Row className="justify-content-md-center" mt={5}> 
+        <Container className='pt-3 pb-3' style={{ width: '40%', display:"flex", flexDirection:"column"}}> 
+            <Row className="justify-content-md-center"> 
                 <Col>
-                    <Card>
-                        <Card.Body>
+                    <Card className="d-flex flex-column" style={{ minHeight: '82vh', flex:1}}>
+                        <Card.Body className="d-flex flex-column justify-content-between">
                             <Row>
                                 <Col>
                                 <img
@@ -24,6 +24,7 @@ const FormLogin = ()=>
                                 height={100}
                                 roundedCircle
                                 style ={{borderRadius: "50%"}}
+                                alt="Avatar"
                                 />
                                 </Col>
 
@@ -41,6 +42,7 @@ const FormLogin = ()=>
                                 height={100}
                                 roundedCircle
                                 style ={{borderRadius: "50%"}}
+                                alt="Avatar"
                                 />
                                 </Col>
                             </Row>
@@ -48,7 +50,7 @@ const FormLogin = ()=>
                             <Form>
 
                             <Form.Group as={Row} className="mb-3" controlId="email">
-                                <Form.Label className="text-md-right text-start form-label-pe-none">Contraseña:</Form.Label>
+                                <Form.Label className="text-md-right text-start form-label-pe-none">Correo electronico:</Form.Label>
                                 <Form.Control type="email" placeholder="Ingresa tu correo electronico" />
                             </Form.Group>
 
@@ -73,12 +75,11 @@ const FormLogin = ()=>
                                     </Col>
                             </Container>
                         </Card.Body>
-                        
                     </Card>
                 </Col>
             </Row>
         </Container>
-
+            
 
         </>
     );
