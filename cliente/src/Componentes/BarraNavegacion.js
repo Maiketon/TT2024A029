@@ -30,7 +30,7 @@ const BarraNavegacion = ({ setVista }) =>
             <Nav.Link onClick={() => setVista('sobreNosotros')} className="mx-2" style={{ cursor: 'pointer' }}>Sobre nosotros</Nav.Link>
             </Nav>
             <Nav>
-            <Button variant="primary" className="mx-1 btn-inscribete">Inscríbete</Button>
+            <Button variant="primary"  onClick={() => setVista('inscribirse')} className="mx-1 btn-inscribete">Inscríbete</Button>
         <Button variant="outline-primary" className="mx-1 btn-iniciar-sesion">Iniciar Sesión</Button>
             </Nav>
         </Container>

@@ -3,15 +3,14 @@ import React,{useState} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 //import Logo from '../Utils/LearnMatchCerebro.png';
 //FRAMEWORKS DE REACT //
-import { Container, Row, Col, Card, Button} from 'react-bootstrap';
-import { Outlet } from 'react-router-dom';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import CarruselPrinicipal from './CarruselPrincipal';
+import { Container} from 'react-bootstrap';
+
 
 //COMPONENTES//
 import BarraNavegacion from './BarraNavegacion';
 import ContenidoPrincipal from './ContenidoPrincipal';
 import SobreNosotros from './SobreNosotros';
+import FormularioInscribirse from './FormularioInscribirse';
 
 const VistaPrincipal = () => {
   const [vista, setVista] = useState('inicio'); // Estado que me permitira que componente mostrar//
@@ -21,7 +20,8 @@ const VistaPrincipal = () => {
     {vista === 'inicio' && (
        <ContenidoPrincipal />
       )}
-      {vista === 'sobreNosotros' && <SobreNosotros />}      
+      {vista === 'sobreNosotros' && <SobreNosotros />} 
+      {vista ==='inscribirse' && <FormularioInscribirse/>}     
       <footer className="footer mt-auto py-3 bg-light">
         <Container>
           <span className="text-muted">"El maestro debe adoptar el papel de facilitador, no proveedor de contenido" <br/> -Lev Semyonovich Vygotski </span>
