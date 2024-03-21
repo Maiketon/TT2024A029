@@ -18,14 +18,7 @@ import SobreNosotros from "./Componentes/SobreNosotros";
 function App() {
   return (
     <div className="App">
-    <Router>
-      <Routes>
-        <Route path="/" element={<VistaPrincipal />}>
-          <Route index element={<div>Contenido principal</div>} />
-          <Route path="sobre-nosotros" element={<SobreNosotros />} />
-        </Route>
-      </Routes>
-    </Router>
+    <VistaPrincipal />
     </div>
   );
 }

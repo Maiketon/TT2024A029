@@ -1,12 +1,14 @@
 import React from "react";
 import {Container, Row, Col, Form, Card, Button} from "react-bootstrap";
-
+import Avatar1 from "../Utils/Avatar1Login.jpg";
+import Avatar2 from "../Utils/Avatar2Login.jpg";
 import "../Css/Botones.css";
 
 
 
 const FormLogin = ()=>
 {
+
     return (
         <>
         <Container> 
@@ -15,11 +17,34 @@ const FormLogin = ()=>
                     <Card>
                         <Card.Body>
                             <Row>
-                            <Card.Title>Bienvenido a LearnMatch</Card.Title>
-                            </Row>
-                            <Card.Text>
+                                <Col>
+                                <img
+                                src={Avatar1}
+                                width={100}
+                                height={100}
+                                roundedCircle
+                                style ={{borderRadius: "50%"}}
+                                />
+                                </Col>
+
+                                <Col>
+                                <Card.Title>Bienvenido a LearnMatch</Card.Title>
+                                <Card.Text>
                               Para Iniciar Sesion en nuestro sistema, por favor accede con tu correo electrónico y tu contraseña.
                             </Card.Text>
+                                </Col>
+                                
+                                <Col>
+                                <img
+                                src={Avatar2}
+                                width={100}
+                                height={100}
+                                roundedCircle
+                                style ={{borderRadius: "50%"}}
+                                />
+                                </Col>
+                            </Row>
+                            
                             <Form>
 
                             <Form.Group as={Row} className="mb-3" controlId="email">
@@ -36,6 +61,14 @@ const FormLogin = ()=>
                                 <Col>
                                     <Button variant="outline-primary" type="submit" className="ms-2 btn-iniciar-sesion">
                                     Iniciar Sesion
+                                    </Button>
+                                    </Col>
+                            </Container>
+                            <Container>
+                                <Col>
+                                <p>Si olvidaste tu contraseña. No te preocupes haz clic aqui!!</p>
+                                    <Button variant="outline-primary" type="submit" className="ms-2 btn-iniciar-sesion">
+                                    <strong>Recuperar Contraseña </strong>
                                     </Button>
                                     </Col>
                             </Container>
