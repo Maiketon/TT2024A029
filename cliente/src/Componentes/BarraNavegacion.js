@@ -31,7 +31,7 @@ const BarraNavegacion = ({ setVista }) =>
             </Nav>
             <Nav>
             <Button variant="primary"  onClick={() => setVista('inscribirse')} className="mx-1 btn-inscribete">Inscríbete</Button>
-        <Button variant="outline-primary" className="mx-1 btn-iniciar-sesion">Iniciar Sesión</Button>
+        <Button variant="outline-primary" onClick={() => setVista('login')} className="mx-1 btn-iniciar-sesion">Iniciar Sesión</Button>
             </Nav>
         </Container>
     </Navbar>
