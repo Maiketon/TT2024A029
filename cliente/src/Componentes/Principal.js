@@ -7,11 +7,11 @@ import { Container} from 'react-bootstrap';
 
 
 //COMPONENTES//
-import BarraNavegacion from './BarraNavegacion';
-import ContenidoPrincipal from './ContenidoPrincipal';
-import SobreNosotros from './SobreNosotros';
-import FormularioInscribirse from './FormularioInscribirse';
-import FormLogin from './Login';
+import BarraNavegacion from './VistasPrincipal/BarraNavegacion';
+import ContenidoPrincipal from './VistasPrincipal/ContenidoPrincipal';
+import SobreNosotros from './VistasPrincipal/SobreNosotros';
+import FormularioInscribirse from './VistasPrincipal/FormularioInscribirse';
+import FormLogin from './VistasPrincipal/Login';
 
 const VistaPrincipal = () => {
   const [vista, setVista] = useState('inicio'); // Estado que me permitira que componente mostrar//
