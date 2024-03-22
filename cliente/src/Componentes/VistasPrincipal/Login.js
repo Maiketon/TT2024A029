@@ -28,14 +28,79 @@ const FormLogin = ()=>
         setModalIncorrecto(true);
     }
     }
-    
+
+    //Logica para los checkbox de la modal de materias
+    // const [checkboxesHabilitadas, setCheckboxesHabilitadas] = useState (new Array(11).fill(true)); //Arreglo utilizado para saber si se debe o no habilitar el checkbox
+    const [seleccionIzquierda, setSeleccionIzquierda] = useState(new Array(11).fill(false));
+    const [seleccionDerecha, setSeleccionDerecha] = useState(new Array(11).fill(false));
+    const [deshabilitado, setDeshabilitado] = useState(new Array(11).fill(false));
+
+    const ActualizarEstado = (indice, columna) => {
+        // Actualiza las selecciones y la deshabilitación basada en la columna y el índice
+        if (columna === "izquierda") {
+            const nuevaSeleccionIzquierda = [...seleccionIzquierda];
+            nuevaSeleccionIzquierda[indice] = !nuevaSeleccionIzquierda[indice];
+            setSeleccionIzquierda(nuevaSeleccionIzquierda);
+
+            // Cambia la deshabilitación solo si se está marcando el checkbox
+            setDeshabilitado(deshabilitado.map((item, i) => i === indice ? nuevaSeleccionIzquierda[indice] : item));
+        } else {
+            const nuevaSeleccionDerecha = [...seleccionDerecha];
+            nuevaSeleccionDerecha[indice] = !nuevaSeleccionDerecha[indice];
+            setSeleccionDerecha(nuevaSeleccionDerecha);
+
+            // Cambia la deshabilitación solo si se está marcando el checkbox
+            setDeshabilitado(deshabilitado.map((item, i) => i === indice ? nuevaSeleccionDerecha[indice] : item));
+        }
+    };
+
+    const crearCheckboxes = (seleccion, columna) => {
+        return seleccion.map((estaSeleccionado, indice) => (
+            <Form.Check
+                type="checkbox"
+                label={`Área académica ${indice + 1}`}
+                key={`${columna}-${indice}`}
+                id={`checkbox-${columna}-${indice}`}
+                checked={estaSeleccionado}
+                onChange={() => ActualizarEstado(indice, columna)}
+                // Deshabilita basado en el estado deshabilitado y no en la selección del otro lado
+                disabled={deshabilitado[indice] && !estaSeleccionado}
+            />
+        ));
+    };
+   
     return (
         <>
         <Container className='pt-3 pb-3' style={{ width: '40%', display:"flex", flexDirection:"column"}}> 
+      
+      <Modal show={modalMaterias} className="modal-materias" centered size="lg" onHide={() => setModalMaterias(false)}>
+        <Modal.Header className="modal-materias-header">
+          <Modal.Title className="modal-materias-titulo">Bienvenido: Selecciona tus Áreas Académicas</Modal.Title>
+        </Modal.Header>
+        <Modal.Body className="modal-materias-body">
+            <p>Con base a tu criterio, selecciona 3 areas academicas en las que consideres que tienes deficiencias y 3 opciones academicas en las que posees un dominio que te gustaria compartir con los demás. </p>
+        <Row>
+            <Col sm={5}>
+                {crearCheckboxes(seleccionIzquierda, 'izquierda')}
+            </Col>
 
+            <Col sm={2} className="d-flex align-items-center justify-content-center">
+            <div style={{ width: '1px', height: '100%', backgroundColor: 'lightgrey' }} />
+            </Col>
 
-        
-        <Modal show={modalIncorrecto}  onHide={() => setModalIncorrecto(false)}>
+            <Col sm={5}>
+                {crearCheckboxes(seleccionDerecha, 'derecha')}
+            </Col>
+        </Row>
+        </Modal.Body>
+        <Modal.Footer className="modal-materias-footer">
+          <Button variant="primary" onClick={() => setModalMaterias(false)}>
+            Se ve bien.
+          </Button>
+        </Modal.Footer>
+      </Modal>
+
+      <Modal show={modalIncorrecto}  onHide={() => setModalIncorrecto(false)}>
         <Modal.Header >
           <Modal.Title >Error</Modal.Title>
         </Modal.Header>
@@ -46,27 +111,6 @@ const FormLogin = ()=>
           </Button>
         </Modal.Footer>
       </Modal>
-
-      
-      <Modal show={modalMaterias} className="modal-materias" onHide={() => setModalMaterias(false)}>
-        <Modal.Header className="modal-materias-header">
-          <Modal.Title className="modal-materias-titulo">Bienvenido</Modal.Title>
-        </Modal.Header>
-        <Modal.Body className="modal-materias-body">Has iniciado sesión correctamente.</Modal.Body>
-        <Modal.Footer className="modal-materias-footer">
-          <Button variant="primary" onClick={() => setModalMaterias(false)}>
-            Genial
-          </Button>
-        </Modal.Footer>
-      </Modal>
-
-
-
-
-
-
-
-
 
 
             <Row className="justify-content-md-center"> 
