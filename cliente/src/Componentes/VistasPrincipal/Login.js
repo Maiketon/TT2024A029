@@ -3,6 +3,7 @@ import {Container, Row, Col, Form, Card, Button, Modal} from "react-bootstrap";
 import Avatar1 from "./Utils/Avatar1Login.jpg";
 import Avatar2 from "./Utils/Avatar2Login.jpg";
 import "./Css/Botones.css";
+import "./Css/Modales.css";
 
 
 
@@ -16,7 +17,7 @@ const FormLogin = ()=>
     const [modalIncorrecto, setModalIncorrecto] = useState(false);
     const [modalMaterias, setModalMaterias] = useState(false);
 
-    //Funcion que va manipula la logica del inicio de sesion //
+    //Funcion que va manipula la logica del inicio de sesion AQUI IRIA EL BACK HASTA CIERTO PUNTO //
     const handleLogin = () => {
         if (correo === "miky_lee24@hotmail.com" && password === "dashita")
     {
@@ -34,12 +35,12 @@ const FormLogin = ()=>
 
 
         
-        <Modal show={modalIncorrecto} onHide={() => setModalIncorrecto(false)}>
-        <Modal.Header>
-          <Modal.Title>Error</Modal.Title>
+        <Modal show={modalIncorrecto}  onHide={() => setModalIncorrecto(false)}>
+        <Modal.Header >
+          <Modal.Title >Error</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Usuario o clave incorrecta.</Modal.Body>
-        <Modal.Footer>
+        <Modal.Body >Usuario o clave incorrecta.</Modal.Body>
+        <Modal.Footer >
           <Button variant="secondary" onClick={() => setModalIncorrecto(false)}>
             Cerrar
           </Button>
@@ -47,12 +48,12 @@ const FormLogin = ()=>
       </Modal>
 
       
-      <Modal show={modalMaterias} onHide={() => setModalMaterias(false)}>
-        <Modal.Header>
-          <Modal.Title>Bienvenido</Modal.Title>
+      <Modal show={modalMaterias} className="modal-materias" onHide={() => setModalMaterias(false)}>
+        <Modal.Header className="modal-materias-header">
+          <Modal.Title className="modal-materias-titulo">Bienvenido</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Has iniciado sesión correctamente.</Modal.Body>
-        <Modal.Footer>
+        <Modal.Body className="modal-materias-body">Has iniciado sesión correctamente.</Modal.Body>
+        <Modal.Footer className="modal-materias-footer">
           <Button variant="primary" onClick={() => setModalMaterias(false)}>
             Genial
           </Button>
