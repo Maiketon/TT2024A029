@@ -34,10 +34,15 @@ const FormLogin = ()=>
     const [seleccionIzquierda, setSeleccionIzquierda] = useState(new Array(11).fill(false));
     const [seleccionDerecha, setSeleccionDerecha] = useState(new Array(11).fill(false));
     const [deshabilitado, setDeshabilitado] = useState(new Array(11).fill(false));
-
     const ActualizarEstado = (indice, columna) => {
         // Actualiza las selecciones y la deshabilitación basada en la columna y el índice
         if (columna === "izquierda") {
+            const seleccionados = seleccionIzquierda.filter(seleccion => seleccion).length; //VERIFICO CUANTOS CHECKBOX HAN SIDO SELECCIONADOS//
+            if (!seleccionIzquierda[indice] && seleccionados>=3)
+            {
+                return; //Si se pasa no permito que siga seleccionando mas
+            }
+
             const nuevaSeleccionIzquierda = [...seleccionIzquierda];
             nuevaSeleccionIzquierda[indice] = !nuevaSeleccionIzquierda[indice];
             setSeleccionIzquierda(nuevaSeleccionIzquierda);
@@ -45,6 +50,11 @@ const FormLogin = ()=>
             // Cambia la deshabilitación solo si se está marcando el checkbox
             setDeshabilitado(deshabilitado.map((item, i) => i === indice ? nuevaSeleccionIzquierda[indice] : item));
         } else {
+            //MISMA LOGICA LA COLUMNA DERECHA //
+            const seleccionados = seleccionDerecha.filter(seleccion => seleccion).length;
+        if (!seleccionDerecha[indice] && seleccionados >= 3) {
+            return;   //Si se pasa no permito que siga seleccionando mas
+        }
             const nuevaSeleccionDerecha = [...seleccionDerecha];
             nuevaSeleccionDerecha[indice] = !nuevaSeleccionDerecha[indice];
             setSeleccionDerecha(nuevaSeleccionDerecha);
@@ -111,8 +121,6 @@ const FormLogin = ()=>
           </Button>
         </Modal.Footer>
       </Modal>
-
-
             <Row className="justify-content-md-center"> 
                 <Col>
                     <Card className="d-flex flex-column" style={{ minHeight: '82vh', flex:1}}>
