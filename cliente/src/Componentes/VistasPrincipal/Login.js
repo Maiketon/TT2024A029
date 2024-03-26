@@ -1,7 +1,13 @@
+//HOOKS Y COMPONENTES DE BOOTSTRAP//
 import React, { useState } from "react";
 import {Container, Row, Col, Form, Card, Button, Modal} from "react-bootstrap";
+// IMAGENESSECCION PRINCIPAL//
 import Avatar1 from "./Utils/Avatar1Login.jpg";
 import Avatar2 from "./Utils/Avatar2Login.jpg";
+//IMAGENES- ICONOS MODALES//
+import EstadoFeliz from "./Utils/Sonrisa.png";
+import EstadoTriste from "./Utils/Triste.png";
+//HOJAS DE ESTILO//
 import "./Css/Botones.css";
 import "./Css/Modales.css";
 
@@ -90,6 +96,32 @@ const FormLogin = ()=>
         <Modal.Body className="modal-materias-body">
             <p>Con base a tu criterio, selecciona 3 areas academicas en las que consideres que tienes deficiencias y 3 opciones academicas en las que posees un dominio que te gustaria compartir con los demás. </p>
         <Row>
+        <Col sm={5} className="d-flex align-items-center justify-content-center">
+        <img
+            src={EstadoTriste}
+            width={100}
+            height={100}
+            roundedCircle
+            style ={{borderRadius: "50%"}}
+             alt="Avatar"
+            />
+        </Col>
+        <Col sm={2} className="d-flex align-items-center justify-content-center">
+        <div style={{ width: '1px', height: '100%', backgroundColor: 'lightgrey' }} />
+        </Col>
+        <Col sm={5} className="d-flex align-items-center justify-content-center">
+        <img
+            src={EstadoFeliz}
+            width={100}
+            height={100}
+            roundedCircle
+            style ={{borderRadius: "50%"}}
+             alt="Avatar"
+            />
+        </Col>
+
+        </Row>
+        <Row className="pt-3">
             <Col sm={5}>
                 {crearCheckboxes(seleccionIzquierda, 'izquierda')}
             </Col>
