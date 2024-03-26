@@ -2,11 +2,11 @@ import React from 'react';
 import { Container, Row, Col, Form, Button, Card } from 'react-bootstrap';
 
 
-const FormularioInscribirse = () =>
+const FormularioInscribirse = ({ setVista }) =>
 {
     return (
         <>
-        <Container className='p-5'>
+        <Container className='p-4'>
           <Row className="justify-content-md-center">
             <Col md={8}>
               <Card>
@@ -49,10 +49,10 @@ const FormularioInscribirse = () =>
                     <label style={{
                         justifyContent: "center",
                         textAlign: "center"
-                    }}>Si ya tienes una cuenta puedes <strong>Iniciar sesion</strong> </label>
+                    }}>Si ya tienes una cuenta puedes <strong className='ir-a-login' onClick={() => setVista('login')}>Iniciar Sesion</strong> </label>
                     
                     </Container >
-                 <Container className='p-3'>
+                 <Container className='p-2'>
                    <Col>
                     <Button variant="outline-primary" type="submit" className="ms-2">
                       Registrarse

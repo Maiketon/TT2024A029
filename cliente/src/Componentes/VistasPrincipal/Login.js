@@ -22,6 +22,7 @@ const FormLogin = ()=>
     //Variables y funciones para manejar el estado de las vistas modales //
     const [modalIncorrecto, setModalIncorrecto] = useState(false);
     const [modalMaterias, setModalMaterias] = useState(false);
+    const [modalRecuperar, setModalRecuperacion] = useState(false);
 
     //Funcion que va manipula la logica del inicio de sesion AQUI IRIA EL BACK HASTA CIERTO PUNTO //
     const handleLogin = () => {
@@ -33,6 +34,11 @@ const FormLogin = ()=>
     {
         setModalIncorrecto(true);
     }
+    }
+
+    const handleRecuperacion = () => 
+    {
+        setModalRecuperacion(true)
     }
 
     //Logica para los checkbox de la modal de materias
@@ -96,7 +102,9 @@ const FormLogin = ()=>
         <Modal.Body className="modal-materias-body">
             <p>Con base a tu criterio, selecciona 3 areas academicas en las que consideres que tienes deficiencias y 3 opciones academicas en las que posees un dominio que te gustaria compartir con los demás. </p>
         <Row>
-        <Col sm={5} className="d-flex align-items-center justify-content-center">
+        <Col sm={5} >
+        <div style={{display:"flex", flexDirection: "column", alignItems: "center"}}>
+        <strong>DEFICIENCIAS</strong>
         <img
             src={EstadoTriste}
             width={100}
@@ -105,11 +113,14 @@ const FormLogin = ()=>
             style ={{borderRadius: "50%"}}
              alt="Avatar"
             />
+        </div>
         </Col>
         <Col sm={2} className="d-flex align-items-center justify-content-center">
         <div style={{ width: '1px', height: '100%', backgroundColor: 'lightgrey' }} />
         </Col>
-        <Col sm={5} className="d-flex align-items-center justify-content-center">
+        <Col sm={5}>
+        <div style={{display:"flex", flexDirection: "column", alignItems: "center"}}>
+        <strong>ENSEÑANZA</strong>
         <img
             src={EstadoFeliz}
             width={100}
@@ -118,6 +129,8 @@ const FormLogin = ()=>
             style ={{borderRadius: "50%"}}
              alt="Avatar"
             />
+        </div>
+            
         </Col>
 
         </Row>
@@ -153,9 +166,34 @@ const FormLogin = ()=>
           </Button>
         </Modal.Footer>
       </Modal>
+
+
+      <Modal  className="modal-materias justify-content-md-center align-items-center" centered size="lg"  show={modalRecuperar}  onHide={() => setModalRecuperacion(false)}>
+        <Modal.Header className="modal-materias-header" >
+          <Modal.Title className="modal-materias-titulo" > ¿Deseas recuperar tu contraseña ?</Modal.Title>
+        </Modal.Header>
+        <Modal.Body className="modal-materias-body">Si olvidaste tu contraseña, por favor ingresa tu correo electronico con el que registraste tu cuenta y en breve
+            te llegara un correo electronico con una contraseña temporal.
+            <Form.Group as={Row} className="mb-3" controlId="email">
+                                <Form.Label className="text-md-right text-start form-label-pe-none">Correo electronico:</Form.Label>
+                                <Form.Control type="email" placeholder="Ingresa tu correo electronico" onChange={(e) => setCorreo(e.target.value)} />
+            </Form.Group>
+        </Modal.Body>
+        <Modal.Footer modal-materias-footer >
+        <Button variant="primary" className="btn-recuperar" onClick={() => setModalRecuperacion(false)}>
+            Aceptar
+          </Button>
+          <Button variant="secondary" onClick={() => setModalRecuperacion(false)}>
+            Cancelar
+          </Button>
+        </Modal.Footer>
+      </Modal>
+
+
+
             <Row className="justify-content-md-center"> 
                 <Col>
-                    <Card className="d-flex flex-column" style={{ minHeight: '82vh', flex:1}}>
+                    <Card className="d-flex flex-column" style={{ minHeight: '60vh',flex:1}}>
                         <Card.Body className="d-flex flex-column justify-content-between">
                             <Row>
                                 <Col>
@@ -210,7 +248,7 @@ const FormLogin = ()=>
                             <Container>
                                 <Col>
                                 <p>Si olvidaste tu contraseña. No te preocupes haz clic aqui!!</p>
-                                    <Button variant="outline-primary" type="submit" className="ms-2 btn-iniciar-sesion">
+                                    <Button  onClick={handleRecuperacion} variant="outline-primary" type="submit" className="ms-2 btn-iniciar-sesion">
                                     <strong>Recuperar Contraseña </strong>
                                     </Button>
                                     </Col>
@@ -219,6 +257,7 @@ const FormLogin = ()=>
                     </Card>
                 </Col>
             </Row>
+            <Row className="d-flex flex-column" style={{ minHeight: '21vh',flex:1}}> <br/></Row> 
         </Container>
             
 

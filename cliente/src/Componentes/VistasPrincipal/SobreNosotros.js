@@ -12,7 +12,7 @@ import CarruselPrinicipal from './CarruselPrincipal';
 const SobreNosotros = () => {
   return (
     <>
-    <Container className='p-5'>
+    <Container className='p-4'>
     <Row>
       <Col>
         <div>
