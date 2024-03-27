@@ -3,7 +3,7 @@ import React,{useState} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 //import Logo from '../Utils/LearnMatchCerebro.png';
 //FRAMEWORKS DE REACT //
-import { Container} from 'react-bootstrap';
+import { Container, Spinner} from 'react-bootstrap';
 
 //HOJA DE ESTILOS//
 import "./Principal.css";
@@ -15,12 +15,34 @@ import SobreNosotros from './VistasPrincipal/SobreNosotros';
 import FormularioInscribirse from './VistasPrincipal/FormularioInscribirse';
 import FormLogin from './VistasPrincipal/Login';
 
+import {CargarProvider,usarCarga} from "./ContextoCarga";
+
+const SpinnerGlobal = () => 
+{
+  const {estaCargando} = usarCarga();
+  if(!estaCargando) return null;
+  return (
+    <div className="spinner-container">
+      <Spinner animation="border" role="status">
+        <span className="visually-hidden">Cargando...</span>
+      </Spinner>
+    </div>
+  );
+}
+
+
+
+
 const VistaPrincipal = () => {
   const [vista, setVista] = useState('inicio'); // Estado que me permitira que componente mostrar//
+
   return (
     <>
+    
+    <CargarProvider>
     <div className="principal-contenedor">
     <BarraNavegacion setVista={setVista}/>
+    <SpinnerGlobal/>
 
 
     <div>
@@ -39,6 +61,7 @@ const VistaPrincipal = () => {
       </footer>
 
     </div>      
+    </CargarProvider>
     </>
   );
 }

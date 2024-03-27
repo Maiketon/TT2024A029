@@ -1,5 +1,6 @@
 //HOOKS Y COMPONENTES DE BOOTSTRAP//
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { usarCarga } from "../ContextoCarga";
 import {Container, Row, Col, Form, Card, Button, Modal} from "react-bootstrap";
 // IMAGENESSECCION PRINCIPAL//
 import Avatar1 from "./Utils/Avatar1Login.jpg";
@@ -15,6 +16,25 @@ import "./Css/Modales.css";
 
 const FormLogin = ()=>
 {   
+
+    //LOGICA PARA EL SPINNER//
+    const {setEstaCargando} = usarCarga();
+    // useEffect(() => {
+    //     setEstaCargando(true);
+    //     // Simula la carga de datos
+    //     setTimeout(() => {
+    //       setEstaCargando(false);
+    //     }, 3000); // Ajusta el tiempo según tus necesidades
+    //   }, [setEstaCargando]);
+    const handleClick = async () => {
+        setEstaCargando(true);
+        // Simula una operación asíncrona como una petición de red
+        await new Promise(resolve => setTimeout(resolve, 2000)); // Espera 2 segundos
+        setEstaCargando(false);
+      };
+//////////////////////////////////////////////////////////////////////////////
+
+
     //VARIABLES QUE ALMACENAN DE MOMENTO EN EL FRONT EL CORREO Y EL PASSWORD PARA HACER Y DEBUGGEAR LAS VISTAS MODALES //
     const [correo, setCorreo] = useState ();
     const [password, setPassword] = useState();
@@ -25,15 +45,30 @@ const FormLogin = ()=>
     const [modalRecuperar, setModalRecuperacion] = useState(false);
 
     //Funcion que va manipula la logica del inicio de sesion AQUI IRIA EL BACK HASTA CIERTO PUNTO //
-    const handleLogin = () => {
-        if (correo === "miky_lee24@hotmail.com" && password === "dashita")
-    {
-        setModalMaterias(true);
-    }
-    else
-    {
-        setModalIncorrecto(true);
-    }
+    const handleLogin = async (event) => {
+    //     if (correo === "miky_lee24@hotmail.com" && password === "dashita")
+    // {
+    //     handleClick()
+    //     setModalMaterias(true);
+    // }
+    // else
+    // {
+    //     setModalIncorrecto(true);
+    // }
+    event.preventDefault();
+    setEstaCargando(true); // Activa el spinner
+
+    // Espera 2 segundos antes de continuar con la lógica
+    setTimeout(() => {
+        // Ahora que han pasado 2 segundos, continúa con la lógica de login
+        if (correo === "miky_lee24@hotmail.com" && password === "dashita") {
+            handleClick(); // Asumiendo que esta función hace algo relevante antes de continuar
+            setModalMaterias(true);
+        } else {
+            setModalIncorrecto(true);
+        }
+        setEstaCargando(false); // Desactiva el spinner independientemente del resultado
+    }, 2000);
     }
 
     const handleRecuperacion = () => 
