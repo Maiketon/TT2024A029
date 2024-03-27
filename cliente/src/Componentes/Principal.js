@@ -22,10 +22,11 @@ const SpinnerGlobal = () =>
   const {estaCargando} = usarCarga();
   if(!estaCargando) return null;
   return (
-    <div className="spinner-container">
+    <div className="spinner-container d-flex" >
       <Spinner animation="border" role="status">
-        <span className="visually-hidden">Cargando...</span>
+        <span className="visually-hidden">Cargando...</span> 
       </Spinner>
+      <div>Cargando . . .</div>
     </div>
   );
 }
