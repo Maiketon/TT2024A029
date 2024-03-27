@@ -7,6 +7,7 @@ import Axios from "axios";
 import 'bootstrap/dist/css/bootstrap.min.css';
 //COMPONENTES D ELA VISTA PRINCIPAL//
 import VistaPrincipal from './Componentes/Principal';
+import PrincipalAdmin from './Componentes/VistasAdmin/PrincipalAdmin';
 
 
 //import Swal from 'sweetalert2'
@@ -17,7 +18,13 @@ import VistaPrincipal from './Componentes/Principal';
 function App() {
   return (
     <div className="App">
-    <VistaPrincipal />
+      <Router>
+        <Routes>
+          <Route path="/" element={<VistaPrincipal />} /> {/* Ruta para VistaPrincipal */}
+          <Route path="/VistasAdmin/PrincipalAdmin" element={<PrincipalAdmin />} />
+          {/* Agrega más rutas según sea necesario */}
+        </Routes>
+      </Router>
     </div>
   );
 }

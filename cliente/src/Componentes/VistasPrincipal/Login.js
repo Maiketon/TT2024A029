@@ -1,6 +1,7 @@
 //HOOKS Y COMPONENTES DE BOOTSTRAP//
 import React, { useState } from "react";
 import {Container, Row, Col, Form, Card, Button, Modal} from "react-bootstrap";
+import { useNavigate } from 'react-router-dom';
 // IMAGENESSECCION PRINCIPAL//
 import Avatar1 from "./Utils/Avatar1Login.jpg";
 import Avatar2 from "./Utils/Avatar2Login.jpg";
@@ -24,13 +25,24 @@ const FormLogin = ()=>
     const [modalMaterias, setModalMaterias] = useState(false);
     const [modalRecuperar, setModalRecuperacion] = useState(false);
 
+    const navigate = useNavigate(); // Utiliza useNavigate para redireccionar en React Router v6
+    // Variables y funciones para manejar el modal de bienvenida al administrador
+    const [modalAdmin, setModalAdmin] = useState(false);
+    const handleCloseModalAdmin = () => {
+       setModalAdmin(false);
+       navigate("/VistasAdmin/PrincipalAdmin"); // Utiliza navigate para redireccionar en React Router v6
+     };
+
     //Funcion que va manipula la logica del inicio de sesion AQUI IRIA EL BACK HASTA CIERTO PUNTO //
     const handleLogin = () => {
         if (correo === "miky_lee24@hotmail.com" && password === "dashita")
     {
         setModalMaterias(true);
     }
-    else
+    else if (correo === "admin@gmail.com" && password === "admin")
+    {
+        setModalAdmin(true); // Muestra el modal de bienvenida al administrador
+    }else
     {
         setModalIncorrecto(true);
     }
