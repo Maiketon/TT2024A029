@@ -48,21 +48,57 @@ const FormLogin = ()=>
     const navigate = useNavigate(); // Utiliza useNavigate para redireccionar en React Router v6
     // Variables y funciones para manejar el modal de bienvenida al administrador
     const [modalAdmin, setModalAdmin] = useState(false);
+    const [modalAlumno, setModalAlumno] = useState(false);
     const handleCloseModalAdmin = () => {
        setModalAdmin(false);
        navigate("/VistasAdmin/PrincipalAdmin"); // Utiliza navigate para redireccionar en React Router v6
      };
 
+     const handleCloseModalAlumno = () => {
+        setModalAlumno(false);
+        navigate("/VistasAlumno/SidebarAlumno"); // Utiliza navigate para redireccionar en React Router v6
+      };
+
+     
+
     //Funcion que va manipula la logica del inicio de sesion AQUI IRIA EL BACK HASTA CIERTO PUNTO //
-    const handleLogin = () => {
-        if (correo === "miky_lee24@hotmail.com" && password === "dashita")
-    {
-        setModalMaterias(true);
-    }
-    else
-    {
-        setModalIncorrecto(true);
-    }
+
+    const handleLogin = async (event) => {
+    //     if (correo === "miky_lee24@hotmail.com" && password === "dashita")
+    // {
+    //     handleClick()
+    //     setModalMaterias(true);
+    // }
+    // else
+    // {
+    //     setModalIncorrecto(true);
+    // }
+    event.preventDefault();
+    setEstaCargando(true); // Activa el spinner
+
+    // Espera 2 segundos antes de continuar con la lógica
+    setTimeout(() => {
+        // Ahora que han pasado 2 segundos, continúa con la lógica de login
+        if (correo === "miky_lee24@hotmail.com" && password === "dashita") {
+            handleClick(); // Asumiendo que esta función hace algo relevante antes de continuar
+            setModalMaterias(true);
+        } else if (correo === "admin@gmail.com" && password === "admin")
+        
+        {
+            handleCloseModalAdmin();
+            setModalAdmin(true); // Muestra el modal de bienvenida al administrador
+        } else if (correo === "alumno@gmail.com" && password === "alumno")
+        {
+            handleCloseModalAlumno(); // Asumiendo que esta función hace algo relevante antes de continuar
+            setModalAlumno(true); // Muestra el modal de bienvenida al administrador
+        }   
+        else
+        {
+            setModalIncorrecto(true);
+        }
+        setEstaCargando(false); // Desactiva el spinner independientemente del resultado
+    }, 2000);
+
     }
 
     const handleRecuperacion = () => 
