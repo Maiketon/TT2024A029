@@ -7,7 +7,6 @@ import Axios from "axios";
 import 'bootstrap/dist/css/bootstrap.min.css';
 //COMPONENTES D ELA VISTA PRINCIPAL//
 import VistaPrincipal from './Componentes/Principal';
-import PrincipalAdmin from './Componentes/VistasAdmin/PrincipalAdmin';
 
 
 //import Swal from 'sweetalert2'

@@ -1,5 +1,6 @@
 //HOOKS Y COMPONENTES DE BOOTSTRAP//
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { usarCarga } from "../ContextoCarga";
 import {Container, Row, Col, Form, Card, Button, Modal} from "react-bootstrap";
 import { useNavigate } from 'react-router-dom';
 // IMAGENESSECCION PRINCIPAL//
@@ -16,6 +17,25 @@ import "./Css/Modales.css";
 
 const FormLogin = ()=>
 {   
+
+    //LOGICA PARA EL SPINNER//
+    const {setEstaCargando} = usarCarga();
+    // useEffect(() => {
+    //     setEstaCargando(true);
+    //     // Simula la carga de datos
+    //     setTimeout(() => {
+    //       setEstaCargando(false);
+    //     }, 3000); // Ajusta el tiempo según tus necesidades
+    //   }, [setEstaCargando]);
+    const handleClick = async () => {
+        setEstaCargando(true);
+        // Simula una operación asíncrona como una petición de red
+        await new Promise(resolve => setTimeout(resolve, 2000)); // Espera 2 segundos
+        setEstaCargando(false);
+      };
+//////////////////////////////////////////////////////////////////////////////
+
+
     //VARIABLES QUE ALMACENAN DE MOMENTO EN EL FRONT EL CORREO Y EL PASSWORD PARA HACER Y DEBUGGEAR LAS VISTAS MODALES //
     const [correo, setCorreo] = useState ();
     const [password, setPassword] = useState();
@@ -39,10 +59,7 @@ const FormLogin = ()=>
     {
         setModalMaterias(true);
     }
-    else if (correo === "admin@gmail.com" && password === "admin")
-    {
-        setModalAdmin(true); // Muestra el modal de bienvenida al administrador
-    }else
+    else
     {
         setModalIncorrecto(true);
     }
