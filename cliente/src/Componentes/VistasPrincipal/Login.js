@@ -13,6 +13,7 @@ import EstadoTriste from "./Utils/Triste.png";
 import "./Css/Botones.css";
 import "./Css/Modales.css";
 
+import axios from "axios";
 
 
 const FormLogin = ()=>
@@ -108,9 +109,27 @@ const FormLogin = ()=>
 
     //Logica para los checkbox de la modal de materias
     // const [checkboxesHabilitadas, setCheckboxesHabilitadas] = useState (new Array(11).fill(true)); //Arreglo utilizado para saber si se debe o no habilitar el checkbox
-    const [seleccionIzquierda, setSeleccionIzquierda] = useState(new Array(11).fill(false));
-    const [seleccionDerecha, setSeleccionDerecha] = useState(new Array(11).fill(false));
-    const [deshabilitado, setDeshabilitado] = useState(new Array(11).fill(false));
+    const [materias, setMaterias] = useState([]);
+    const [seleccionIzquierda, setSeleccionIzquierda] = useState([]);
+    const [seleccionDerecha, setSeleccionDerecha] = useState([]);
+    const [deshabilitado, setDeshabilitado] = useState([]);
+    // Obtener materias del backend
+  useEffect(() => {
+    const fetchMaterias = async () => {
+      try {
+        const response = await axios.get('http://localhost:3001/api/alumnos/materias');
+        setMaterias(response.data);
+        // Inicializar los estados basados en los datos recibidos
+        setSeleccionIzquierda(new Array(response.data.length).fill(false));
+        setSeleccionDerecha(new Array(response.data.length).fill(false));
+        setDeshabilitado(new Array(response.data.length).fill(false));
+      } catch (error) {
+        console.error('Error al obtener las materias', error);
+      }
+    };
+
+    fetchMaterias();
+  }, []);
     const ActualizarEstado = (indice, columna) => {
         // Actualiza las selecciones y la deshabilitación basada en la columna y el índice
         if (columna === "izquierda") {
@@ -142,19 +161,18 @@ const FormLogin = ()=>
     };
 
     const crearCheckboxes = (seleccion, columna) => {
-        return seleccion.map((estaSeleccionado, indice) => (
-            <Form.Check
-                type="checkbox"
-                label={`Área académica ${indice + 1}`}
-                key={`${columna}-${indice}`}
-                id={`checkbox-${columna}-${indice}`}
-                checked={estaSeleccionado}
-                onChange={() => ActualizarEstado(indice, columna)}
-                // Deshabilita basado en el estado deshabilitado y no en la selección del otro lado
-                disabled={deshabilitado[indice] && !estaSeleccionado}
-            />
+        return materias.map((materia, indice) => (
+          <Form.Check
+            type="checkbox"
+            label={materia.NOMBRE_MATERIA}
+            key={`${columna}-${materia.PK_MATERIA}`}
+            id={`checkbox-${columna}-${materia.PK_MATERIA}`}
+            checked={seleccion[indice]}
+            onChange={() => ActualizarEstado(indice, columna)}
+            disabled={deshabilitado[indice] && !seleccion[indice]}
+          />
         ));
-    };
+      };
    
     return (
         <>
